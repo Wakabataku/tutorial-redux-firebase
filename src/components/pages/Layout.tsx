@@ -34,6 +34,7 @@ const LayoutWrapper = styled.div`
   }
   .ly_main {
     max-width: 700px;
-    padding: 30px 20px;
+    margin: 0 auto;
+    padding: 30px 40px;
   }
 `

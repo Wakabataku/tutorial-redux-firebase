@@ -1,6 +1,10 @@
-import axios from "axios"
+import axios, { AxiosResponse } from "axios"
 
-export const getBooksRequest = async (value: string) => {
+import { BookItem } from "../store/bookSlice"
+
+export const getBooksRequest = async (
+  value: string
+): Promise<AxiosResponse> => {
   const baseUrl = "https://www.googleapis.com/books/v1/volumes"
 
   const params = {

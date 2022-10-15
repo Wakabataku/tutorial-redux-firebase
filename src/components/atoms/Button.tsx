@@ -23,6 +23,9 @@ const Button: React.FC<{
 const ButtonWrapper = styled.div`
   width: fit-content;
   & {
+    .el_Btn {
+      border: 1.5px solid #333;
+    }
     .el_Btn a {
       margin: 0 auto;
       text-align: center;
@@ -32,7 +35,6 @@ const ButtonWrapper = styled.div`
       color: #333;
       font-size: 14px;
       font-weight: 500;
-      border: 1.5px solid #333;
     }
   }
 `

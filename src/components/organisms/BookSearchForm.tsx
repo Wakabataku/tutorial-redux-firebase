@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import { useAppDispatch, AppDispatch } from "../../store/store"
 import InputForm from "../molecules/InputForm"
+import { getBooks } from "../../store/bookSlice"
 
 const BookSearchForm: React.FC = () => {
   const dispatch: AppDispatch = useAppDispatch()
@@ -10,7 +11,9 @@ const BookSearchForm: React.FC = () => {
   return (
     <BookSearchFormWrapper>
       <div className="bl_inputFormWrapper">
-        <InputForm props={{ onSubmit: (word) => console.log(word) }} />
+        <InputForm
+          props={{ onSubmit: (word) => dispatch(getBooks({ value: word })) }}
+        />
       </div>
     </BookSearchFormWrapper>
   )
