@@ -5,6 +5,7 @@ import Button from "../atoms/Button"
 import { addClass } from "../../lib/addClass"
 import { VolumeInfo } from "../../store/bookSlice"
 import { useGetElementProperty } from "../../lib/useGetElementProperty"
+import BookInfo from "../atoms/BookInfo"
 
 const BookIcon: React.FC<{
   props: {
@@ -25,27 +26,24 @@ const BookIcon: React.FC<{
     }
   }
   useEffect(() => {
-    const height = getElementProperty("height")
-    setHeight(height)
+    setHeight(getElementProperty("height"))
   }, [])
   return (
-    <BookIconWrapper height={maxDespHeight} className="BookIcon">
+    <BookIconWrapper height={maxDespHeight}>
       <div className={className}>
         <div className="el_bookImgWrapper">
           <img src={props.volumeInfo.imageLinks.thumbnail} />
         </div>
         <div className="el_bookList">
-          <p>【書籍名】</p>
-          <div className="el_bookInfo">
-            <p>{props.volumeInfo.title}</p>
-            <p>{props.volumeInfo.subtitle}</p>
-          </div>
-          <p>【概要】</p>
-          <div ref={elm} className={readMore}>
-            <a>{props.volumeInfo.description}</a>
-          </div>
+          <BookInfo
+            props={{
+              volumeInfo: props.volumeInfo,
+              readMore: readMore,
+              elm: elm,
+            }}
+          />
           {readMore === "el_readmore" ? (
-            despHeight >= 150 ? (
+            despHeight >= maxDespHeight ? (
               <div className="el_readMoreBtnWrapper">
                 <Button
                   props={{
@@ -108,9 +106,6 @@ const BookIconWrapper = styled.div<DespHeight>`
       width: fit-content;
       padding-right: 80px;
     }
-    p {
-      margin: 0;
-    }
     .el_bookList {
       display: inline-block;
       vertical-align: top;
@@ -150,21 +145,6 @@ const BookIconWrapper = styled.div<DespHeight>`
         width: 100%;
         content: "";
       }
-    }
-    .readmore-label {
-      display: table;
-      bottom: 5px;
-      position: absolute;
-      bottom: 5px;
-      left: 50%;
-      transform: translateX(-50%);
-      -webkit-transform: translateX(-50%);
-      margin: 0 auto;
-      z-index: 2;
-      padding: 0 10px;
-      background-color: #ff7777;
-      border-radius: 10px;
-      color: #fff;
     }
   }
 `

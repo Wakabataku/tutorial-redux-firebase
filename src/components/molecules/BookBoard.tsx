@@ -1,9 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 
-import { addClass } from "../../lib/addClass"
 import { VolumeInfo } from "../../store/bookSlice"
-import BookIcon from "../atoms/BookIcon"
+import BookIcon from "./BookIcon"
 import BookModal from "./BookModal"
 
 const BookBoard: React.FC<{
@@ -18,13 +17,7 @@ const BookBoard: React.FC<{
         const modal = (
           <BookModal
             props={{
-              bookIcon: (
-                <BookIcon
-                  props={{
-                    volumeInfo: item,
-                  }}
-                />
-              ),
+              bookIcon: <img src={item.imageLinks.thumbnail} />,
             }}
           />
         )

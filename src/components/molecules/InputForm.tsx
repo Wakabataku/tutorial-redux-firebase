@@ -28,7 +28,7 @@ const InputForm: React.FC<{
           <Button
             props={{
               onClick: () => props.onSubmit(word),
-              text: "送信",
+              text: "検索",
               className: "el_submitBtn",
             }}
           />
